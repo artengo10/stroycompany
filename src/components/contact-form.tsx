@@ -26,12 +26,12 @@ export default function ContactForm() {
     };
 
     return (
-        <Card className="w-full max-w-md mx-auto shadow-lg border-blue-100">
-            <CardHeader className="bg-blue-50 rounded-t-lg border-b border-blue-100">
-                <CardTitle className="text-black text-center">
-                    Оставить заявку
+        <Card className="w-full max-w-md mx-auto shadow-lg border-slate-700 bg-slate-800/80 backdrop-blur-sm">
+            <CardHeader className="bg-slate-700/50 rounded-t-lg border-b border-slate-600">
+                <CardTitle className="text-white text-center text-2xl font-bebas tracking-wide">
+                    ОСТАВИТЬ ЗАЯВКУ
                 </CardTitle>
-                <CardDescription className="text-blue-900 text-center">
+                <CardDescription className="text-slate-300 text-center text-lg">
                     Заполните форму и мы свяжемся с вами
                 </CardDescription>
             </CardHeader>
@@ -45,7 +45,7 @@ export default function ContactForm() {
                             value={formData.name}
                             onChange={handleChange}
                             required
-                            className="text-blue-900 placeholder-blue-400 border-blue-200 focus:border-blue-500"
+                            className="text-white placeholder-slate-400 border-slate-600 bg-slate-700/50 focus:border-blue-500 text-lg py-6"
                         />
                     </div>
                     <div>
@@ -56,14 +56,14 @@ export default function ContactForm() {
                             value={formData.phone}
                             onChange={handleChange}
                             required
-                            className="text-blue-900 placeholder-blue-400 border-blue-200 focus:border-blue-500"
+                            className="text-white placeholder-slate-400 border-slate-600 bg-slate-700/50 focus:border-blue-500 text-lg py-6"
                         />
                     </div>
                     <Button
                         type="submit"
-                        className="w-full bg-blue-900 hover:bg-blue-800 text-white shadow-md transition-colors duration-300"
+                        className="w-full bg-blue-600 hover:bg-blue-500 text-white py-6 text-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-500 font-bebas tracking-wide"
                     >
-                        Отправить
+                        ОТПРАВИТЬ
                     </Button>
                 </form>
             </CardContent>

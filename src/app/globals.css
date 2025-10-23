@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
 @custom-variant dark (&:is(.dark *));
 
@@ -8,6 +9,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-bebas: "Bebas Neue", sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -79,44 +81,223 @@
 }
 
 .dark {
-  --background: oklch(0.13 0.028 261.692);
-  --foreground: oklch(0.985 0.002 247.839);
-  --card: oklch(0.21 0.034 264.665);
-  --card-foreground: oklch(0.985 0.002 247.839);
-  --popover: oklch(0.21 0.034 264.665);
-  --popover-foreground: oklch(0.985 0.002 247.839);
-  --primary: oklch(0.928 0.006 264.531);
-  --primary-foreground: oklch(0.21 0.034 264.665);
-  --secondary: oklch(0.278 0.033 256.848);
-  --secondary-foreground: oklch(0.985 0.002 247.839);
-  --muted: oklch(0.278 0.033 256.848);
-  --muted-foreground: oklch(0.707 0.022 261.325);
-  --accent: oklch(0.278 0.033 256.848);
-  --accent-foreground: oklch(0.985 0.002 247.839);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.21 0.034 264.665);
-  --sidebar-foreground: oklch(0.985 0.002 247.839);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0.002 247.839);
-  --sidebar-accent: oklch(0.278 0.033 256.848);
-  --sidebar-accent-foreground: oklch(0.985 0.002 247.839);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  /* Основные цвета темной темы - глубокие синие/серые тона */
+  --background: oklch(0.12 0.02 260);
+  --foreground: oklch(0.98 0.002 247.839);
+
+  /* Карточки и поверхности */
+  --card: oklch(0.15 0.025 260);
+  --card-foreground: oklch(0.98 0.002 247.839);
+
+  /* Всплывающие элементы */
+  --popover: oklch(0.15 0.025 260);
+  --popover-foreground: oklch(0.98 0.002 247.839);
+
+  /* Основной цвет - синий акцент */
+  --primary: oklch(0.7 0.18 250);
+  --primary-foreground: oklch(0.98 0.002 247.839);
+
+  /* Вторичный цвет */
+  --secondary: oklch(0.2 0.03 260);
+  --secondary-foreground: oklch(0.98 0.002 247.839);
+
+  /* Приглушенные цвета */
+  --muted: oklch(0.2 0.03 260);
+  --muted-foreground: oklch(0.7 0.02 260);
+
+  /* Акцентный цвет */
+  --accent: oklch(0.7 0.18 250);
+  --accent-foreground: oklch(0.98 0.002 247.839);
+
+  /* Деструктивные действия */
+  --destructive: oklch(0.7 0.2 25);
+
+  /* Границы и инпуты */
+  --border: oklch(0.3 0.04 260);
+  --input: oklch(0.2 0.03 260);
+  --ring: oklch(0.7 0.18 250);
+
+  /* Графики */
+  --chart-1: oklch(0.7 0.18 250);
+  --chart-2: oklch(0.6 0.15 180);
+  --chart-3: oklch(0.7 0.12 300);
+  --chart-4: oklch(0.65 0.2 80);
+  --chart-5: oklch(0.75 0.16 350);
+
+  /* Боковая панель */
+  --sidebar: oklch(0.15 0.025 260);
+  --sidebar-foreground: oklch(0.98 0.002 247.839);
+  --sidebar-primary: oklch(0.7 0.18 250);
+  --sidebar-primary-foreground: oklch(0.98 0.002 247.839);
+  --sidebar-accent: oklch(0.2 0.03 260);
+  --sidebar-accent-foreground: oklch(0.98 0.002 247.839);
+  --sidebar-border: oklch(0.3 0.04 260);
+  --sidebar-ring: oklch(0.7 0.18 250);
 }
 
+/* Кастомные стили для темной темы строительного сайта */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-slate-900 text-slate-100 font-sans;
+    background: linear-gradient(
+      135deg,
+      oklch(0.12 0.02 260) 0%,
+      oklch(0.15 0.03 260) 100%
+    );
+  }
+
+  /* Специфические стили для строительной тематики */
+  .construction-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(0.12 0.02 260) 0%,
+      oklch(0.15 0.025 260) 50%,
+      oklch(0.18 0.03 260) 100%
+    );
+  }
+
+  .card-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(0.15 0.025 260) 0%,
+      oklch(0.18 0.03 260) 100%
+    );
+  }
+
+  .header-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(0.15 0.025 260) 0%,
+      oklch(0.18 0.03 260) 100%
+    );
+  }
+}
+
+/* Стили для шрифта Bebas Neue */
+.font-bebas {
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.025em;
+}
+
+/* Кастомные утилиты */
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+  }
+
+  .backdrop-blur-soft {
+    backdrop-filter: blur(8px);
+  }
+
+  .backdrop-blur-medium {
+    backdrop-filter: blur(12px);
+  }
+
+  .border-glow {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+  }
+}
+
+/* Анимации для строительной тематики */
+@keyframes subtle-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+  }
+}
+
+.glow-animation {
+  animation: subtle-glow 3s ease-in-out infinite;
+}
+
+/* Современные стили для обрезки текста в карточках */
+.service-card-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+  max-height: 4.2em; /* 3 строки * 1.4 line-height */
+}
+
+/* Адаптивные стили для очень маленьких экранов */
+@media (max-width: 480px) {
+  .service-card-text {
+    -webkit-line-clamp: 2;
+    max-height: 2.8em; /* 2 строки * 1.4 line-height */
+  }
+}
+
+/* Гарантия одинаковой высоты для всех карточек */
+.service-card {
+  min-height: 320px;
+}
+
+/* Улучшенная поддержка для разных браузеров */
+@supports not (-webkit-line-clamp: 3) {
+  .service-card-text {
+    max-height: 4.2em;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .service-card-text::after {
+    content: "...";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(90deg, transparent, #0f172a 50%);
+    padding-left: 8px;
+  }
+}
+
+/* Улучшенная адаптивность для очень маленьких экранов */
+@media (max-width: 360px) {
+  .service-card-text {
+    -webkit-line-clamp: 2;
+    max-height: 2.8em;
+    font-size: 0.7rem;
+  }
+}
+
+/* Стили для скроллбара */
+@layer base {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-slate-800;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-600 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-500;
+  }
+}
+
+/* Responsive improvements */
+@layer utilities {
+  .container-custom {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
   }
 }
