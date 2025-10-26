@@ -13,18 +13,60 @@ export default function ContactFormService() {
         phone: "",
         message: ""
     });
+    const [isLoading, setIsLoading] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Данные формы:", formData);
-        alert("Заявка отправлена! Мы свяжемся с вами в ближайшее время.");
-        setFormData({ name: "", phone: "", message: "" });
+        setIsLoading(true);
+
+        // Убираем всю очистку и форматирование - отправляем как есть
+        try {
+            const response = await fetch('/api/telegram', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    phone: formData.phone, // отправляем без изменений
+                    message: formData.message
+                }),
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                alert("Заявка отправлена! Мы свяжемся с вами в ближайшее время.");
+                setFormData({ name: "", phone: "", message: "" });
+            } else {
+                alert("Ошибка при отправке заявки. Пожалуйста, попробуйте еще раз.");
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert("Ошибка при отправке заявки. Пожалуйста, попробуйте еще раз.");
+        } finally {
+            setIsLoading(false);
+        }
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({
             ...formData,
-            [e.target.name]: e.target.value
+            name: e.target.value
+        });
+    };
+
+    const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData({
+            ...formData,
+            phone: e.target.value // принимаем любое значение без форматирования
+        });
+    };
+
+    const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setFormData({
+            ...formData,
+            message: e.target.value
         });
     };
 
@@ -50,9 +92,10 @@ export default function ContactFormService() {
                             name="name"
                             placeholder="Иван Иванов"
                             value={formData.name}
-                            onChange={handleChange}
+                            onChange={handleNameChange}
                             required
                             className="text-white placeholder-slate-400 border-slate-600 bg-slate-700/50 focus:border-blue-500 text-lg py-6"
+                            disabled={isLoading}
                         />
                     </div>
 
@@ -62,13 +105,14 @@ export default function ContactFormService() {
                         </Label>
                         <Input
                             id="phone"
-                            type="tel"
+                            type="text" // меняем с "tel" на "text" чтобы убрать телефонную клавиатуру на мобильных
                             name="phone"
-                            placeholder="+7 (999) 999-99-99"
+                            placeholder="Введите номер телефона"
                             value={formData.phone}
-                            onChange={handleChange}
+                            onChange={handlePhoneChange}
                             required
                             className="text-white placeholder-slate-400 border-slate-600 bg-slate-700/50 focus:border-blue-500 text-lg py-6"
+                            disabled={isLoading}
                         />
                     </div>
 
@@ -81,16 +125,18 @@ export default function ContactFormService() {
                             name="message"
                             placeholder="Расскажите о вашем проекте..."
                             value={formData.message}
-                            onChange={handleChange}
+                            onChange={handleMessageChange}
                             className="text-white placeholder-slate-400 border-slate-600 bg-slate-700/50 focus:border-blue-500 text-lg min-h-[100px]"
+                            disabled={isLoading}
                         />
                     </div>
 
                     <Button
                         type="submit"
                         className="w-full bg-blue-600 hover:bg-blue-500 text-white py-6 text-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-500 tracking-wide font-bebas"
+                        disabled={isLoading}
                     >
-                        ОТПРАВИТЬ ЗАЯВКУ
+                        {isLoading ? "ОТПРАВКА..." : "ОТПРАВИТЬ ЗАЯВКУ"}
                     </Button>
                 </form>
             </CardContent>

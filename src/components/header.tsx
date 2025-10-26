@@ -59,26 +59,32 @@ export default function Header() {
                         <div className="hidden sm:flex items-center space-x-2 bg-slate-700/80 px-4 py-2 rounded-lg border border-slate-600 transition-all duration-300 hover:bg-slate-600 hover:shadow-lg group">
                             <Phone className="h-4 w-4 text-blue-400" />
                             <span className="text-slate-200 font-medium">
-                                +7 (999) 999-99-99
+                                +7 (906) 367-78-04
                             </span>
                         </div>
 
                         {/* Соцсети */}
-                        <div className="flex space-x-3">
+                        <div className="flex space-x-3 md:space-x-3">
                             <a
-                                href="#"
-                                className="bg-green-600 text-white p-2 rounded-full transition-all duration-300 hover:bg-green-500 hover:scale-110 shadow-lg"
+                                href="https://wa.me/79063677804"
+                                className="bg-green-600 text-white p-1.5 md:p-2 rounded-full transition-all duration-300 hover:bg-green-500 hover:scale-110 shadow-lg"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Написать в WhatsApp"
                             >
-                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-3 h-3 md:w-4 md:h-4" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884" />
                                 </svg>
                             </a>
                             <a
-                                href="#"
-                                className="bg-blue-600 text-white p-2 rounded-full transition-all duration-300 hover:bg-blue-500 hover:scale-110 shadow-lg"
+                                href="https://web.telegram.org/k/#610614269"
+                                className="bg-blue-600 text-white p-1.5 md:p-2 rounded-full transition-all duration-300 hover:bg-blue-500 hover:scale-110 shadow-lg"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Написать в Telegram"
                             >
-                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.441 16.892c-2.102.144-6.784.144-8.883 0C5.282 16.736 5.017 15.622 5 12c.017-3.629.285-4.736 2.558-4.892 2.099-.144 6.782-.144 8.883 0C18.718 7.264 18.982 8.378 19 12c-.018 3.629-.285 4.736-2.559 4.892zM10 9.658l4.917 2.338L10 14.342V9.658z" />
+                                <svg className="w-3 h-3 md:w-4 md:h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.14.14-.26.26-.534.26l.213-3.053 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.136-.954l11.566-4.458c.538-.196 1.006.128.832.941z" />
                                 </svg>
                             </a>
                         </div>

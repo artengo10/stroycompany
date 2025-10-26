@@ -34,7 +34,7 @@ export default function ServiceCard({ id, title, description, image, href }: Ser
             </div>
 
             {/* Заголовок - фиксированная высота */}
-            <CardHeader className="pb-2 flex-grow-0 px-3 pt-3 min-h-[60px] flex items-center justify-center">
+            <CardHeader className="pb-2 flex-grow-0 px-3 pt-1 min-h-[30px] flex items-center justify-center">
                 <CardTitle className="text-base md:text-lg font-bold text-white group-hover:text-blue-400 transition-colors duration-300 text-center font-bebas tracking-wide leading-tight">
                     {title}
                 </CardTitle>
@@ -52,10 +52,14 @@ export default function ServiceCard({ id, title, description, image, href }: Ser
                 <div className="mt-3 pt-2 border-t border-slate-600/50">
                     <Button
                         onClick={handleClick}
-                        className="w-full bg-slate-700 hover:bg-slate-600 text-white py-2 text-xs border border-slate-600 hover:border-blue-500 transition-all duration-300"
+                        className="w-full text-white py-2 text-xs border transition-all duration-300 font-bebas tracking-wide"
                         variant="outline"
+                        style={{
+                            backgroundColor: '#16a34a', // green-600
+                            borderColor: '#22c55e', // green-500
+                        }}
                     >
-                        ПОДРОБНЕЕ
+                        УЗНАТЬ ЦЕНУ
                     </Button>
                 </div>
             </CardContent>

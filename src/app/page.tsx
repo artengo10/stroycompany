@@ -113,11 +113,11 @@ export default function Home() {
                             <div className="bg-slate-800/60 backdrop-blur-md rounded-2xl p-6 md:p-12 shadow-2xl mb-8 border border-slate-700 mx-2">
                                 <div className="space-y-6">
                                     {/* ОБНОВЛЕННЫЙ ЗАГОЛОВОК - исправлен перенос текста */}
-                                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight tracking-wide font-bebas px-2">
-                                        ПРОФЕССИОНАЛЬНЫЕ<br className="hidden sm:block" /> СТРОИТЕЛЬНЫЕ УСЛУГИ
+                                    <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-2 md:mb-4 tracking-wide font-bebas leading-tight">
+                                        ВСЕ ВИДЫ <br />СТРОИТЕЛЬНЫХ РАБОТ
                                     </h1>
-                                    <p className="text-lg sm:text-xl text-slate-200 leading-relaxed max-w-2xl mx-auto px-2">
-                                        Полный комплекс строительных работ от фундамента до внутренней отделки
+                                    <p className="text-lg md:text-xl lg:text-2xl text-slate-200 leading-relaxed max-w-2xl mx-auto">
+                                        Полный комплекс работ от фундамента до внутренней отделки
                                     </p>
                                 </div>
                             </div>
@@ -167,11 +167,8 @@ export default function Home() {
                     <div className="bg-slate-800/60 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-2xl border border-slate-700">
                         <div className="text-center mb-12">
                             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-wide font-bebas">
-                                СВЯЖИТЕСЬ С НАМИ
+                                СВЯЖИТЕСЬ С НАМИ 
                             </h2>
-                            <p className="text-slate-300 text-xl">
-                                Оставьте заявку и мы свяжемся с вами для бесплатной консультации
-                            </p>
                         </div>
                         <ContactForm />
                     </div>
