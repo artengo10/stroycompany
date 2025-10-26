@@ -4,57 +4,59 @@ import { useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { MapPin, Mail, Phone } from "lucide-react";
 
-// Простое объявление типа для Yandex Maps
-declare global {
-    interface Window {
-        ymaps: any;
-    }
-}
-
 export default function Footer() {
     const mapRef = useRef<HTMLDivElement>(null);
     const mapInstance = useRef<any>(null);
 
     useEffect(() => {
+        // Функция для безопасной работы с Yandex Maps
         const loadYandexMap = () => {
-            if (!window.ymaps && mapRef.current) {
+            if (mapRef.current) {
                 const script = document.createElement('script');
                 script.src = 'https://api-maps.yandex.ru/2.1/?apikey=ваш_api_ключ&lang=ru_RU';
                 script.async = true;
-                script.onload = initializeMap;
+                script.onload = () => {
+                    // Проверяем, что ymaps загрузился
+                    if ((window as any).ymaps) {
+                        initializeMap();
+                    }
+                };
                 document.head.appendChild(script);
-            } else if (window.ymaps) {
-                initializeMap();
             }
         };
 
         const initializeMap = () => {
-            if (!mapRef.current || !window.ymaps) return;
+            const ymaps = (window as any).ymaps;
+            if (!mapRef.current || !ymaps) return;
 
-            window.ymaps.ready(() => {
-                if (mapInstance.current) {
-                    mapInstance.current.destroy();
+            ymaps.ready(() => {
+                try {
+                    if (mapInstance.current) {
+                        mapInstance.current.destroy();
+                    }
+
+                    // Создаем карту с безопасным доступом
+                    mapInstance.current = new ymaps.Map(mapRef.current, {
+                        center: [56.339362, 43.801521],
+                        zoom: 15,
+                        controls: ['zoomControl', 'fullscreenControl']
+                    });
+
+                    // Создаем метку с безопасным доступом
+                    const placemark = new ymaps.Placemark([56.339362, 43.801521], {
+                        balloonContent: 'г. Нижний Новгород, ул. Федосеенко, д. 52<br/>Строительная компания',
+                        hintContent: 'Наш офис'
+                    }, {
+                        preset: 'islands#blueBuildingIcon',
+                        iconColor: '#3b82f6'
+                    });
+
+                    // Добавляем метку на карту
+                    mapInstance.current.geoObjects.add(placemark);
+                    placemark.balloon.open();
+                } catch (error) {
+                    console.error('Error initializing Yandex Map:', error);
                 }
-
-                // Создаем карту
-                mapInstance.current = new window.ymaps.Map(mapRef.current, {
-                    center: [56.339362, 43.801521],
-                    zoom: 15,
-                    controls: ['zoomControl', 'fullscreenControl']
-                });
-
-                // Создаем метку
-                const placemark = new window.ymaps.Placemark([56.339362, 43.801521], {
-                    balloonContent: 'г. Нижний Новгород, ул. Федосеенко, д. 52<br/>Строительная компания',
-                    hintContent: 'Наш офис'
-                }, {
-                    preset: 'islands#blueBuildingIcon',
-                    iconColor: '#3b82f6'
-                });
-
-                // Добавляем метку на карту
-                mapInstance.current.geoObjects.add(placemark);
-                placemark.balloon.open();
             });
         };
 
@@ -62,7 +64,11 @@ export default function Footer() {
 
         return () => {
             if (mapInstance.current) {
-                mapInstance.current.destroy();
+                try {
+                    mapInstance.current.destroy();
+                } catch (error) {
+                    console.error('Error destroying map:', error);
+                }
             }
         };
     }, []);
