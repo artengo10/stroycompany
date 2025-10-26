@@ -5,14 +5,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 interface ServiceCardProps {
-    id: string;
     title: string;
     description: string;
     image: string;
     href: string;
 }
 
-export default function ServiceCard({ id, title, description, image, href }: ServiceCardProps) {
+export default function ServiceCard({ title, description, image, href }: ServiceCardProps) {
     const router = useRouter();
 
     const handleClick = () => {

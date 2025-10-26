@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { MapPin, Mail, Phone } from "lucide-react";
 
-// Declare Yandex Maps types
+// Простое объявление типа для Yandex Maps
 declare global {
     interface Window {
         ymaps: any;
@@ -36,13 +36,14 @@ export default function Footer() {
                     mapInstance.current.destroy();
                 }
 
-                // Обновленные координаты [56.339362, 43.801521]
+                // Создаем карту
                 mapInstance.current = new window.ymaps.Map(mapRef.current, {
                     center: [56.339362, 43.801521],
                     zoom: 15,
                     controls: ['zoomControl', 'fullscreenControl']
                 });
 
+                // Создаем метку
                 const placemark = new window.ymaps.Placemark([56.339362, 43.801521], {
                     balloonContent: 'г. Нижний Новгород, ул. Федосеенко, д. 52<br/>Строительная компания',
                     hintContent: 'Наш офис'
@@ -51,6 +52,7 @@ export default function Footer() {
                     iconColor: '#3b82f6'
                 });
 
+                // Добавляем метку на карту
                 mapInstance.current.geoObjects.add(placemark);
                 placemark.balloon.open();
             });
