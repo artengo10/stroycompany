@@ -44,7 +44,7 @@ export default function Footer() {
 
                     // Создаем метку с безопасным доступом
                     const placemark = new ymaps.Placemark([56.339362, 43.801521], {
-                        balloonContent: 'г. Нижний Новгород, ул. Федосеенко, д. 52<br/>Строительная компания',
+                        balloonContent: 'г. Нижний Новгород, ул. Федосеенко, д. 52 с<br/>Строительная компания',
                         hintContent: 'Наш офис'
                     }, {
                         preset: 'islands#blueBuildingIcon',
@@ -96,7 +96,7 @@ export default function Footer() {
                             <MapPin className="h-4 w-4 md:h-5 md:w-5 text-blue-400 mr-2 md:mr-3" />
                             <h3 className="text-white text-base md:text-lg lg:text-xl font-bold tracking-wide font-bebas">АДРЕС</h3>
                         </div>
-                        <p className="text-slate-300 text-sm md:text-base lg:text-lg">г. Нижний Новгород, ул. Федосеенко, д. 52</p>
+                        <p className="text-slate-300 text-sm md:text-base lg:text-lg">г. Нижний Новгород, ул. Федосеенко, д. 52 с</p>
                     </div>
 
                     <div className="bg-slate-700/50 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-slate-600 hover:border-blue-500/50 transition-all duration-300">
