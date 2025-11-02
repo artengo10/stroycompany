@@ -205,71 +205,71 @@ export default function Home() {
                 </section>
 
                 {/* НОВАЯ СЕКЦИЯ: СОТРУДНИЧЕСТВО */}
-                <section id="cooperation-section" className="container mx-auto px-4 py-20">
-                    <div className="bg-slate-800/60 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-2xl border border-slate-700">
-                        <div className="text-center mb-12">
-                            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-wide font-bebas">
+                <section id="cooperation-section" className="container mx-auto px-3 sm:px-4 py-12 md:py-20">
+                    <div className="bg-slate-800/60 backdrop-blur-md rounded-2xl p-4 sm:p-6 md:p-8 lg:p-12 shadow-2xl border border-slate-700">
+                        <div className="text-center mb-8 md:mb-12">
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6 tracking-wide font-bebas">
                                 СОТРУДНИЧЕСТВО
                             </h2>
                             <div className="max-w-4xl mx-auto">
-                                <p className="text-slate-300 text-lg md:text-xl mb-8 leading-relaxed">
+                                <p className="text-slate-300 text-base sm:text-lg md:text-xl mb-6 md:mb-8 leading-relaxed px-2">
                                     Приглашаем строительные бригады и самозанятых специалистов к сотрудничеству
                                 </p>
 
-                                <div className="grid md:grid-cols-2 gap-8 mt-12">
-                                    <div className="bg-slate-700/50 rounded-xl p-6 border border-slate-600">
-                                        <h3 className="text-2xl font-bold text-white mb-4 font-bebas text-center">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mt-8 md:mt-12">
+                                    <div className="bg-slate-700/50 rounded-xl p-4 sm:p-5 md:p-6 border border-slate-600">
+                                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 md:mb-4 font-bebas text-center">
                                             ДЛЯ БРИГАД
                                         </h3>
-                                        <ul className="text-slate-300 space-y-3 text-left">
+                                        <ul className="text-slate-300 space-y-2 sm:space-y-3 text-sm sm:text-base text-left">
                                             <li className="flex items-start">
-                                                <span className="text-green-400 mr-2">✓</span>
+                                                <span className="text-green-400 mr-2 mt-1 flex-shrink-0">✓</span>
                                                 Регулярные заказы и стабильная загрузка
                                             </li>
                                             <li className="flex items-start">
-                                                <span className="text-green-400 mr-2">✓</span>
+                                                <span className="text-green-400 mr-2 mt-1 flex-shrink-0">✓</span>
                                                 Своевременная оплата работ
                                             </li>
                                             <li className="flex items-start">
-                                                <span className="text-green-400 mr-2">✓</span>
+                                                <span className="text-green-400 mr-2 mt-1 flex-shrink-0">✓</span>
                                                 Техническая поддержка и консультации
                                             </li>
                                             <li className="flex items-start">
-                                                <span className="text-green-400 mr-2">✓</span>
+                                                <span className="text-green-400 mr-2 mt-1 flex-shrink-0">✓</span>
                                                 Работа по официальному договору
                                             </li>
                                         </ul>
                                     </div>
 
-                                    <div className="bg-slate-700/50 rounded-xl p-6 border border-slate-600">
-                                        <h3 className="text-2xl font-bold text-white mb-4 font-bebas text-center">
+                                    <div className="bg-slate-700/50 rounded-xl p-4 sm:p-5 md:p-6 border border-slate-600">
+                                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 md:mb-4 font-bebas text-center">
                                             ДЛЯ СПЕЦИАЛИСТОВ
                                         </h3>
-                                        <ul className="text-slate-300 space-y-3 text-left">
+                                        <ul className="text-slate-300 space-y-2 sm:space-y-3 text-sm sm:text-base text-left">
                                             <li className="flex items-start">
-                                                <span className="text-green-400 mr-2">✓</span>
+                                                <span className="text-green-400 mr-2 mt-1 flex-shrink-0">✓</span>
                                                 Гибкий график работы
                                             </li>
                                             <li className="flex items-start">
-                                                <span className="text-green-400 mr-2">✓</span>
+                                                <span className="text-green-400 mr-2 mt-1 flex-shrink-0">✓</span>
                                                 Достойная оплата труда
                                             </li>
                                             <li className="flex items-start">
-                                                <span className="text-green-400 mr-2">✓</span>
+                                                <span className="text-green-400 mr-2 mt-1 flex-shrink-0">✓</span>
                                                 Постоянное развитие и обучение
                                             </li>
                                             <li className="flex items-start">
-                                                <span className="text-green-400 mr-2">✓</span>
+                                                <span className="text-green-400 mr-2 mt-1 flex-shrink-0">✓</span>
                                                 Карьерный рост в компании
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
 
-                                <div className="mt-12 text-center">
+                                <div className="mt-8 md:mt-12 text-center">
                                     <Button
                                         onClick={scrollToForm}
-                                        className="bg-green-600 hover:bg-green-500 text-white px-12 py-6 text-xl shadow-xl hover:shadow-xl transition-all duration-300 border border-green-500 font-bebas tracking-wider"
+                                        className="bg-green-600 hover:bg-green-500 text-white px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6 text-base sm:text-lg md:text-xl shadow-xl hover:shadow-xl transition-all duration-300 border border-green-500 font-bebas tracking-wider w-full sm:w-auto"
                                         size="lg"
                                     >
                                         ОТПРАВИТЬ ЗАЯВКУ НА СОТРУДНИЧЕСТВО
