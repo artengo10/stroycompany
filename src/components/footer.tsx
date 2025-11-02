@@ -1,77 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import { Button } from "@/components/ui/button";
 import { MapPin, Mail, Phone } from "lucide-react";
+import YandexMap from './yandex-map';
 
 export default function Footer() {
-    const mapRef = useRef<HTMLDivElement>(null);
-    const mapInstance = useRef<any>(null);
-
-    useEffect(() => {
-        // Функция для безопасной работы с Yandex Maps
-        const loadYandexMap = () => {
-            if (mapRef.current) {
-                const script = document.createElement('script');
-                script.src = 'https://api-maps.yandex.ru/2.1/?apikey=ваш_api_ключ&lang=ru_RU';
-                script.async = true;
-                script.onload = () => {
-                    // Проверяем, что ymaps загрузился
-                    if ((window as any).ymaps) {
-                        initializeMap();
-                    }
-                };
-                document.head.appendChild(script);
-            }
-        };
-
-        const initializeMap = () => {
-            const ymaps = (window as any).ymaps;
-            if (!mapRef.current || !ymaps) return;
-
-            ymaps.ready(() => {
-                try {
-                    if (mapInstance.current) {
-                        mapInstance.current.destroy();
-                    }
-
-                    // Создаем карту с безопасным доступом
-                    mapInstance.current = new ymaps.Map(mapRef.current, {
-                        center: [56.339362, 43.801521],
-                        zoom: 15,
-                        controls: ['zoomControl', 'fullscreenControl']
-                    });
-
-                    // Создаем метку с безопасным доступом
-                    const placemark = new ymaps.Placemark([56.339362, 43.801521], {
-                        balloonContent: 'г. Нижний Новгород, ул. Федосеенко, д. 52 с<br/>Строительная компания',
-                        hintContent: 'Наш офис'
-                    }, {
-                        preset: 'islands#blueBuildingIcon',
-                        iconColor: '#3b82f6'
-                    });
-
-                    // Добавляем метку на карту
-                    mapInstance.current.geoObjects.add(placemark);
-                    placemark.balloon.open();
-                } catch (error) {
-                    console.error('Error initializing Yandex Map:', error);
-                }
-            });
-        };
-
-        loadYandexMap();
-
-        return () => {
-            if (mapInstance.current) {
-                try {
-                    mapInstance.current.destroy();
-                } catch (error) {
-                    console.error('Error destroying map:', error);
-                }
-            }
-        };
-    }, []);
+    const pathname = usePathname();
+    const isHomePage = pathname === '/';
 
     return (
         <footer id="footer" className="bg-slate-800 border-t border-slate-700 shadow-2xl">
@@ -131,19 +67,17 @@ export default function Footer() {
                     </div>
                 </div>
 
-                {/* Яндекс.Карта */}
-                <div className="bg-slate-700/50 backdrop-blur-sm rounded-xl border border-slate-600 mb-8 md:mb-12 overflow-hidden">
-                    <div className="p-4 border-b border-slate-600">
-                        <h3 className="text-white text-lg font-bebas tracking-wide text-center">
-                            МЫ НАХОДИМСЯ
-                        </h3>
+                {/* Яндекс.Карта только на главной странице */}
+                {isHomePage && (
+                    <div className="bg-slate-700/50 backdrop-blur-sm rounded-xl border border-slate-600 mb-8 md:mb-12 overflow-hidden">
+                        <div className="p-4 border-b border-slate-600">
+                            <h3 className="text-white text-lg font-bebas tracking-wide text-center">
+                                МЫ НАХОДИМСЯ
+                            </h3>
+                        </div>
+                        <YandexMap />
                     </div>
-                    <div
-                        ref={mapRef}
-                        className="w-full h-64 md:h-80 lg:h-96"
-                        style={{ minHeight: '256px' }}
-                    />
-                </div>
+                )}
             </div>
         </footer>
     );

@@ -28,6 +28,27 @@ export default function Header() {
         { name: "Кладка стен", path: "/services/kladka" },
         { name: "Малярные работы", path: "/services/malyar" },
         { name: "Плитка", path: "/services/plitka" },
+        // Новые услуги
+        {
+            name: "Каркасное домостроение",
+            path: "/services/karkasnoe-domostroenie",
+            image: "/images/services/НОВОЕ_НАЗВАНИЕ_ФАЙЛА.jpg"
+        },
+        {
+            name: "Монолитные домостроения",
+            path: "/services/monolitnye-domostroeniya",
+            image: "/images/services/НОВОЕ_НАЗВАНИЕ_ФАЙЛА.jpg"
+        },
+        {
+            name: "Окна ПВХ алюминий",
+            path: "/services/okna",
+            image: "/images/services/НОВОЕ_НАЗВАНИЕ_ФАЙЛА.jpg"
+        },
+        {
+            name: "Потолки натяжные",
+            path: "/services/natyazhnye-potolki",
+            image: "/images/services/НОВОЕ_НАЗВАНИЕ_ФАЙЛА.jpg"
+        },
     ];
 
     const handleMenuClick = (path: string) => {
@@ -89,7 +110,7 @@ export default function Header() {
                             </a>
                         </div>
 
-                        {/* Бургер-меню */}
+                        {/* Бургер-меню - отображается на всех устройствах */}
                         <Sheet open={isOpen} onOpenChange={setIsOpen}>
                             <SheetTrigger asChild>
                                 <Button variant="ghost" size="icon" className="text-blue-400 hover:bg-slate-700 border border-slate-600">

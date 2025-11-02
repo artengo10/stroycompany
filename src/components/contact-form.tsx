@@ -11,7 +11,8 @@ export default function ContactForm() {
     const [formData, setFormData] = useState({
         name: "",
         phone: "",
-        comment: "" // добавляем поле для комментария
+        comment: "",
+        service: "" // новое поле для выбора услуги
     });
     const [isLoading, setIsLoading] = useState(false);
 
@@ -28,7 +29,8 @@ export default function ContactForm() {
                 body: JSON.stringify({
                     name: formData.name,
                     phone: formData.phone,
-                    comment: formData.comment // добавляем комментарий в отправку
+                    comment: formData.comment,
+                    service: formData.service // отправляем выбранную услугу
                 }),
             });
 
@@ -36,7 +38,7 @@ export default function ContactForm() {
 
             if (result.success) {
                 alert("Заявка отправлена! Мы свяжемся с вами в ближайшее время.");
-                setFormData({ name: "", phone: "", comment: "" });
+                setFormData({ name: "", phone: "", comment: "", service: "" });
             } else {
                 alert("Ошибка при отправке заявки. Пожалуйста, попробуйте еще раз.");
             }
@@ -66,6 +68,13 @@ export default function ContactForm() {
         setFormData({
             ...formData,
             comment: e.target.value
+        });
+    };
+
+    const handleServiceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setFormData({
+            ...formData,
+            service: e.target.value
         });
     };
 
@@ -112,7 +121,38 @@ export default function ContactForm() {
                         />
                     </div>
 
-                    {/* Добавляем поле для комментария */}
+                    {/* Новое поле для выбора услуги */}
+                    <div className="space-y-2">
+                        <Label htmlFor="service" className="text-slate-300 text-sm font-medium">
+                            Интересующая услуга (необязательно)
+                        </Label>
+                        <select
+                            id="service"
+                            name="service"
+                            value={formData.service}
+                            onChange={handleServiceChange}
+                            className="w-full text-white placeholder-slate-400 border border-slate-600 bg-slate-700/50 focus:border-blue-500 text-lg py-4 px-3 rounded-md"
+                            disabled={isLoading}
+                        >
+                            <option value="">Выберите услугу</option>
+                            <option value="Фундамент">Фундамент</option>
+                            <option value="Демонтаж">Демонтаж</option>
+                            <option value="Внутренняя отделка">Внутренняя отделка</option>
+                            <option value="Отопление">Отопление</option>
+                            <option value="Электрика">Электрика</option>
+                            <option value="Канализация">Канализация</option>
+                            <option value="Монолитные перекрытия">Монолитные перекрытия</option>
+                            <option value="Кладка стен">Кладка стен</option>
+                            <option value="Малярные работы">Малярные работы</option>
+                            <option value="Плитка">Плитка</option>
+                            <option value="Каркасное домостроение">Каркасное домостроение</option>
+                            <option value="Монолитное домостроение">Монолитное домостроение</option>
+                            <option value="Окна из ПВХ и алюминия">Окна из ПВХ и алюминия</option>
+                            <option value="Натяжные потолки">Натяжные потолки</option>
+                            <option value="Сотрудничество">Сотрудничество</option>
+                        </select>
+                    </div>
+
                     <div className="space-y-2">
                         <Label htmlFor="comment" className="text-slate-300 text-sm font-medium">
                             Комментарий (необязательно)
